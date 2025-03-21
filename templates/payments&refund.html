@@ -1,0 +1,286 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+
+<section id="payments-refunds" class="payments-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">Payments & Refunds</h2>
+            <p class="section-description">We ensure secure transactions and hassle-free refunds. Here's everything you need to know.</p>
+        </div>
+
+        <div class="row">
+            <!-- Payment Methods -->
+            <div class="col-md-6 payment-box">
+                <h3 class="policy-title"><i class="fas fa-credit-card"></i> Payment Methods</h3>
+                <p>We accept the following payment options:</p>
+                <ul>
+                    <li><strong>Credit/Debit Cards:</strong> Visa, MasterCard, American Express</li>
+                    <li><strong>Net Banking:</strong> Available for major banks</li>
+                    <li><strong>Wallets & UPI:</strong> Google Pay, Paytm, PhonePe</li>
+                    <li><strong>Cash on Delivery (COD):</strong> Available for selected locations</li>
+                </ul>
+            </div>
+
+            <!-- Refund Policy -->
+            <div class="col-md-6 refund-box">
+                <h3 class="policy-title"><i class="fas fa-money-bill-wave"></i> Refund Policy</h3>
+                <p>We offer refunds in the following cases:</p>
+                <ul>
+                    <li><strong>Defective or Damaged Products:</strong> Report within 48 hours of delivery</li>
+                    <li><strong>Incorrect Items:</strong> Return the item within 14 days</li>
+                    <li><strong>Order Cancellations:</strong> Full refund for cancellations made within 12 hours</li>
+                    <li><strong>Non-Refundable Items:</strong> Personalized or final sale products</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Additional Info -->
+        <div class="row mt-5">
+            <div class="col-md-6 transaction-box">
+                <h3 class="policy-title"><i class="fas fa-shield-alt"></i> Secure Transactions</h3>
+                <p>Your payments are encrypted and processed securely through trusted payment gateways.</p>
+            </div>
+
+            <div class="col-md-6 support-box">
+                <h3 class="policy-title"><i class="fas fa-headset"></i> Need Help?</h3>
+                <p>Contact us for any payment or refund-related queries:</p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:support@bookvista.com" style="color:#834333;">support@bookvista.com</a></p>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer id="footer">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-md-4">
+
+					<div class="footer-item">
+						<div class="company-brand">
+							<img src="static/images/bookvistalogo2.png" alt="logo" class="footer-logo">
+							<p>BookVista is your go-to online bookstore, offering a vast collection of books across various genres.
+								Whether you're a fiction lover, a knowledge seeker, or looking for the latest bestsellers, we have something for every reader. Explore, discover, and enjoy seamless book shopping with BookVista!
+							</p>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col-md-2">
+
+					<div class="footer-menu">
+						<h5>Company</h5>
+						<ul class="menu-list">
+							<li class="menu-item">
+								<a href="{% url 'about' %}">About Us</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'articles' %}">Articles </a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'careers' %}">Careers</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'contactus' %}">Contact Us</a>
+							</li>
+
+						</ul>
+					</div>
+
+				</div>
+				<div class="col-md-2">
+
+					<div class="footer-menu">
+						<h5>Discover</h5>
+						<ul class="menu-list">
+							<li class="menu-item">
+								<a href="{% url 'home' %}">Home</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'category' %}">Books</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'category' %}">Categories</a>
+							</li>
+
+						</ul>
+					</div>
+
+				</div>
+				<div class="col-md-2">
+
+					<div class="footer-menu">
+						<h5>My account</h5>
+						<ul class="menu-list">
+							<li class="menu-item">
+								<a href="{% url 'login' %}">Sign In</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'cart' %}">View Cart</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'wishlist' %}">View Wishlist</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'order_history' %}">Order History</a>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+				<div class="col-md-2">
+
+					<div class="footer-menu">
+						<h5>Policies</h5>
+						<ul class="menu-list">
+							<li class="menu-item">
+								<a href="{% url 'privacypolicy' %}">Privacy Policy</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'shipping&returns' %}">Shipping and Returns</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'payments&refund' %}">Payments and Refunds</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 't&c' %}">T&C</a>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+
+			</div>
+			<!-- / row -->
+
+		</div>
+	</footer>
+
+	<div id="footer-bottom">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+
+
+
+							<div class="col-md-6">
+								<div class="social-links align-right">
+									<ul>
+										<li>
+											<a href="#"><i class="fab fa-facebook"></i></a>
+										</li>
+										<li>
+											<a href="#"><i class="fab fa-twitter"></i></a>
+										</li>
+										<li>
+											<a href="#"><i class="fab fa-youtube"></i></a>
+										</li>
+										<li>
+											<a href="#"><i class="fab fa-instagram"></i></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+						</div>
+					</div><!--grid-->
+
+				</div><!--footer-bottom-content-->
+			</div>
+		</div>
+	</div>
+
+ <style>
+
+/* Payments & Refunds Section */
+.payments-section {
+    background-color: #f4f4f4; /* Light Grey */
+    padding: 70px 0;
+    text-align: center;
+}
+
+/* Section Title */
+.section-title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.section-description {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+}
+
+/* Policy Boxes */
+.payment-box,
+.refund-box,
+.transaction-box,
+.support-box {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    margin-bottom: 20px;
+
+}
+
+.policy-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #834333;
+    margin-bottom: 15px;
+}
+
+.policy-title i {
+    margin-right: 10px;
+}
+
+/* Lists */
+ul {
+    padding-left: 20px;
+    color: #333;
+}
+
+ul li {
+    margin-bottom: 8px;
+}
+
+/* Contact Info */
+.support-box a {
+    color: #ff7b00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.support-box a:hover {
+    color: #ff9900;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2.4rem;
+    }
+
+    .policy-title {
+        font-size: 1.6rem;
+    }
+
+    .payment-box,
+    .refund-box,
+    .transaction-box,
+    .support-box {
+        padding: 25px;
+    }
+}
+
+ </style>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+<link href="{% static 'css/vendor.css' %}" rel="stylesheet">
+<link href="{% static 'css/icomoon.css' %}" rel="stylesheet">
+<link href="{% static 'css/normalize.css' %}" rel="stylesheet">
+
+<div class="container d-flex justify-content-center align-items-center" style="height: 140vh;">
+    <div class="col-md-6">
+        <!-- Section Header with Enhanced Styling -->
+        <div class="section-header text-center mb-4">
+            <h2 class="section-title text-primary font-weight-bold">Register here</h2>
+        </div>
+
+        <hr>
+
+        <!-- Register Form with Modern Style -->
+        <form method="POST" class="bg-light p-4 rounded shadow-sm">
+            {% csrf_token %}
+
+            <!-- Form Fields with Padding and Border -->
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+
+            <!-- Submit Button with Custom Styling -->
+            <button type="submit" class="btn btn-primary w-100 py-2 mt-3 font-weight-bold">Register</button>
+        </form>
+
+        <!-- Login Link styled to be more noticeable -->
+        <p class="text-center mt-4">
+            <a href="{% url 'login' %}" class="text-warning font-weight-bold d-block mt-3">Already have an account? <span class="text-info">Log in</span></a>
+        </p>
+    </div>
+</div>
+
+{% endblock %}

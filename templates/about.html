@@ -1,0 +1,238 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<link href="{% static 'css/aboutstyle.css' %}" rel="stylesheet">
+
+   <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h1>About <span>BOOKVISTA</span></h1>
+                    <p>
+                        Welcome to BOOKVISTA, the go-to destination for book lovers worldwide! Whether you're passionate about fiction,
+                        knowledge-driven non-fiction, or insightful academic resources, we bring the finest collection of books to your fingertips.
+                        We believe in the power of words to inspire, educate, and transform lives. BOOKVISTA is not just a bookstore;
+                        it’s a community of readers, learners, and dreamers.
+                    </p>
+                </div>
+                <div class="about-image fade-in">
+                    <img src="{%static 'images/books5.jpg'%}" alt="Bookstore">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="vision-section">
+        <div class="overlay">
+        <div class="container">
+            <div class="content">
+                <div class="box fade-in-left">
+                    <h2 style="color:white;">Our Vision</h2>
+                    <p>
+                        At BOOKVISTA, we envision a future where books are accessible to everyone, breaking barriers of geography,
+                        affordability, and availability. We aim to cultivate a love for reading and make knowledge-sharing effortless
+                        through a well-designed, feature-rich digital bookstore.
+                        We strive to create an online book space that brings together authors, publishers, and readers into a thriving literary
+                        ecosystem. Our goal is to help you find the perfect book that inspires and educates.
+                    </p>
+                </div>
+                <div class="box fade-in-right">
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-section">
+        <div class="container">
+            <h2 class="fade-in">Why Choose BOOKVISTA?</h2>
+            <br>
+            <div class="features">
+                <div class="feature fade-in">
+                    <img src="{%static 'images/collectionbooks.jpg'%}" alt="Collection">
+                    <h3>Vast Collection</h3>
+                    <p>Discover thousands of books across various genres, from timeless classics to the latest bestsellers.</p>
+                </div>
+
+                <div class="feature fade-in">
+                    <img src="{%static 'images/checkout.jpg'%}" alt="Secure Checkout">
+                    <h3>Fast & Secure Checkout</h3>
+                    <p>Shop with confidence using our seamless and secure checkout process.</p>
+                </div>
+                <div class="feature fade-in">
+                    <img src="{%static 'images/delivery.jpg'%}" alt="Worldwide Delivery">
+                    <h3>Worldwide Delivery</h3>
+                    <p>Enjoy quick and reliable book deliveries, no matter where you are.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Customer Reviews -->
+    <section class="reviews-section">
+        <div class="container">
+            <h2 class="fade-in">What Our Customers Say</h2>
+            <div class="reviews">
+                <div class="review fade-in">
+                    <p>"BOOKVISTA has changed my reading experience! The collection is fantastic, and delivery is always fast!"</p>
+                    <h4>– Sarah L.</h4>
+                </div>
+                <div class="review fade-in">
+                    <p>"I love how easy it is to find and order books. The best online bookstore!"</p>
+                    <h4>– David R.</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <div class="text-center">
+        <a href="{% url 'category' %}" class="btn">Explore Books</a>
+    </div>
+
+<footer id="footer">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-md-4">
+
+					<div class="footer-item">
+						<div class="company-brand">
+							<img src="static/images/bookvistalogo2.png" alt="logo" class="footer-logo">
+							<p>BookVista is your go-to online bookstore, offering a vast collection of books across various genres.
+								Whether you're a fiction lover, a knowledge seeker, or looking for the latest bestsellers, we have something for every reader. Explore, discover, and enjoy seamless book shopping with BookVista!
+							</p>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col-md-2">
+
+					<div class="footer-menu">
+						<h5>Company</h5>
+						<ul class="menu-list">
+							<li class="menu-item">
+								<a href="{% url 'about' %}">About Us</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'articles' %}">Articles </a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'careers' %}">Careers</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'contactus' %}">Contact Us</a>
+							</li>
+
+						</ul>
+					</div>
+
+				</div>
+				<div class="col-md-2">
+
+					<div class="footer-menu">
+						<h5>Discover</h5>
+						<ul class="menu-list">
+							<li class="menu-item">
+								<a href="{% url 'home' %}">Home</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'category' %}">Books</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'category' %}">Categories</a>
+							</li>
+
+						</ul>
+					</div>
+
+				</div>
+				<div class="col-md-2">
+
+					<div class="footer-menu">
+						<h5>My account</h5>
+						<ul class="menu-list">
+							<li class="menu-item">
+								<a href="{% url 'login' %}">Sign In</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'cart' %}">View Cart</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'wishlist' %}">View Wishlist</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'order_history' %}">Order History</a>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+				<div class="col-md-2">
+
+					<div class="footer-menu">
+						<h5>Policies</h5>
+						<ul class="menu-list">
+							<li class="menu-item">
+								<a href="{% url 'privacypolicy' %}">Privacy Policy</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'shipping&returns' %}">Shipping and Returns</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'payments&refund' %}">Payments and Refunds</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 't&c' %}">T&C</a>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+
+			</div>
+			<!-- / row -->
+
+		</div>
+	</footer>
+
+	<div id="footer-bottom">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+
+
+
+							<div class="col-md-6">
+								<div class="social-links align-right">
+									<ul>
+										<li>
+											<a href="#"><i class="fab fa-facebook"></i></a>
+										</li>
+										<li>
+											<a href="#"><i class="fab fa-twitter"></i></a>
+										</li>
+										<li>
+											<a href="#"><i class="fab fa-youtube"></i></a>
+										</li>
+										<li>
+											<a href="#"><i class="fab fa-instagram"></i></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+						</div>
+					</div><!--grid-->
+
+				</div><!--footer-bottom-content-->
+			</div>
+		</div>
+	</div>
+{% endblock %}

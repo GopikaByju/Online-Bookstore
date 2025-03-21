@@ -1,0 +1,39 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+
+<link href="{%static 'css/style.css'%}" rel="stylesheet">
+
+  <div class="p2">
+        <center><h1>Display Articles</h1></center>
+      </div>
+
+<table class="table table-table table-hover">
+
+  <thead>
+            <tr>
+                <th>Name</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+    {% for item in cat %}
+   <tbody>
+
+            <tr>
+
+                <td>{{item.name}}</td>
+
+
+</div>
+
+
+                <td><a href="{% url 'categoryedit' item.id %}">edit</a></td>
+                <td><a href="{% url 'categorydelete' item.id %}">delete</a></td>
+            </tr>
+
+        </tbody>
+    {% endfor %}
+
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+
+<link href="{%static 'css/style.css'%}" rel="stylesheet">
+<link href="{%static 'css/vendor.css'%}" rel="stylesheet">
+<link href="{%static 'css/icomoon.css'%}" rel="stylesheet">
+<link href="{%static 'css/normalize.css'%}" rel="stylesheet">
+
+
+
+     <div class="p2">
+        <center><h1>Book</h1></center>
+      </div>
+
+   <hr>
+
+
+ <h4>Title:</h4>
+{{boo.title}}
+ <h4>Author:</h4>
+{{boo.author}}
+ <h4>Genre:</h4>
+{{boo.genre}}
+ <h4>Publisher:</h4>
+{{boo.publisher}}
+     <h4>Publication date:</h4>
+{{boo.publication_date}}
+     <h4>ISBN:</h4>
+{{boo.isbn}}
+     <h4>Edition:</h4>
+{{boo.edition}}
+     <h4>Pages:</h4>
+{{boo.pages}}
+     <h4>language:</h4>
+{{boo.language}}
+     <h4>Cover Type:</h4>
+{{boo.cover_type}}
+     <h4>Rating:</h4>
+{{boo.rating}}/5
+     <h4>Price:</h4>
+₹{{boo.price}}
+     <h4>Discount:</h4>
+{{boo.discount}}%
+     <h4>Stock Status:</h4>
+{{boo.stock_status}}
+     <h4>Description:</h4>
+{{boo.description}}
+<h4>Image:</h4>
+<div  style="width: 12rem;">
+  <img src="{{boo.book_image.url}}" style="width:126px" class="card-img-top" alt="...">
+     <h4>Dimensions:</h4>
+{{boo.dimensions}}
+     <h4>Weight:</h4>
+{{boo.weight}}g
+     <h4>Paper Quality:</h4>
+{{boo.paper_quality}}
+     <h4>Print Type:</h4>
+{{boo.print_type}}
+     <h4>Binding:</h4>
+{{boo.binding}}
+
+
+{% endblock %}

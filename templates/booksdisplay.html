@@ -1,0 +1,89 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+
+<link href="{%static 'css/style.css'%}" rel="stylesheet">
+
+  <div class="p2">
+        <center><h1>Display Articles</h1></center>
+      </div>
+
+<table class="table table-table table-hover">
+
+  <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Genre</th>
+                <th>Publisher</th>
+                <th>PublicationDate</th>
+                <th>ISBN</th>
+                <th>Edition</th>
+                <th>Pages</th>
+                <th>Language</th>
+                <th>CoverType</th>
+                <th>Rating</th>
+                <th>Price</th>
+                <th>Discount</th>
+                <th>StockStatus</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Dimensions</th>
+                <th>Weight</th>
+                <th>PaperQuality</th>
+                <th>PrintType</th>
+                <th>Binding</th>
+
+                <th>View</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+    {% for item in boo %}
+   <tbody>
+
+            <tr>
+
+                <td>{{item.title}}</td>
+                <td>{{item.author}}</td>
+                <td>{{item.genre}}</td>
+                <td>{{item.publisher}}</td>
+                <td>{{item.publication_date}}</td>
+                <td>{{item.isbn}}</td>
+                <td>{{item.edition}}</td>
+                <td>{{item.pages}}</td>
+                <td>{{item.language}}</td>
+                <td>{{item.cover_type}}</td>
+                <td>{{item.rating}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.discount}}</td>
+                <td>{{item.stock_status}}</td>
+                <td>{{item.description}}</td>
+
+
+                <td>
+    {% if item.book_image %}
+        <div class="card" style="width: 8rem;">
+            <img src="{{ item.book_image.url }}" class="card-img-top" alt="Book Image">
+        </div>
+    {% else %}
+        No Image
+    {% endif %}
+</td>
+
+                <td>{{item.dimensions}}</td>
+                <td>{{item.weight}}</td>
+                <td>{{item.paper_quality}}</td>
+                <td>{{item.print_type}}</td>
+                <td>{{item.binding}}</td>
+
+                <td><a href="{% url 'booksingle' item.id %}">view</a>
+                <td><a href="{% url 'booksedit' item.id %}">edit</a></td>
+                <td><a href="{% url 'booksdelete' item.id %}">delete</a></td>
+            </tr>
+
+        </tbody>
+    {% endfor %}
+
+
+{% endblock %}

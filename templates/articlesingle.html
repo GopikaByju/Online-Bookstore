@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+
+<link href="{%static 'css/style.css'%}" rel="stylesheet">
+<link href="{%static 'css/vendor.css'%}" rel="stylesheet">
+<link href="{%static 'css/icomoon.css'%}" rel="stylesheet">
+<link href="{%static 'css/normalize.css'%}" rel="stylesheet">
+
+
+
+     <div class="p2">
+        <center><h1>Article</h1></center>
+      </div>
+
+   <hr>
+
+
+ <h4>Title:</h4>
+{{art.article_title}}
+<h4>Date:</h4>
+{{art.article_date}}
+<h4>Description:</h4>
+{{art.article_desc}}
+<h4>Image:</h4>
+
+<div class="card" style="width: 12rem;">
+  <img src="{{art.article_image.url}}" style="width:126px" class="card-img-top" alt="...">
+
+
+{% endblock %}

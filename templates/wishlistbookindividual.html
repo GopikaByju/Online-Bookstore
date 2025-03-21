@@ -1,0 +1,114 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+<link href="{% static 'css/vendor.css' %}" rel="stylesheet">
+<link href="{% static 'css/icomoon.css' %}" rel="stylesheet">
+<link href="{% static 'css/normalize.css' %}" rel="stylesheet">
+
+<div class="container mt-5">
+    <div class="row align-items-center">
+        <!-- Product Image Section -->
+        <div class="col-lg-5 text-center">
+            <div class="book-image">
+                <img src="{{ boo.book_image.url }}" class="img-fluid rounded shadow-lg" alt="Book Image">
+            </div>
+        </div>
+
+        <!-- Product Details Section -->
+        <div class="col-lg-7">
+            <div class="book-details p-4 bg-light rounded shadow">
+                <h2 class="fw-bold text-primary">{{ boo.title }}</h2>
+                <p class="text-muted"><strong>by</strong> {{ boo.author }}</p>
+                <p class="text-danger fw-bold fs-4">₹{{ boo.price }}</p>
+                <p class="text-warning fw-bold fs-5"><strong>Discount:</strong> {{ boo.discount }}% Off</p>
+                <p class="text-secondary">{{ boo.description }}</p>
+                <p class="text-success fw-bold">Delivery within 4-6 business days</p>
+                <img src="{% static 'images/warranty.png' %}" alt="Warranty" class="img-fluid" style="max-width: 300px;">
+
+                <!-- Buttons Section -->
+                <div class="mt-4 d-flex gap-3">
+                    <form action="{% url 'wishlist' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-dark px-4 py-2">
+                            <i class="bi bi-cart-plus me-2"></i> Back to Wishlist
+                        </button>
+                    </form>
+
+                    <form action="{% url 'add_to_cart' boo.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger px-4 py-2">
+                            <i class="bi bi-heart me-2"></i> Add to Cart
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Specifications -->
+    <div class="mt-5 p-4 bg-white shadow rounded">
+        <h3 class="text-center text-primary">Product Details</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Genre:</strong> {{ boo.genre }}</li>
+                    <li class="list-group-item"><strong>Publisher:</strong> {{ boo.publisher }}</li>
+                    <li class="list-group-item"><strong>Publication Date:</strong> {{ boo.publication_date }}</li>
+                    <li class="list-group-item"><strong>ISBN:</strong> {{ boo.isbn }}</li>
+                    <li class="list-group-item"><strong>Edition:</strong> {{ boo.edition }}</li>
+                    <li class="list-group-item"><strong>Pages:</strong> {{ boo.pages }}</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Language:</strong> {{ boo.language }}</li>
+                    <li class="list-group-item"><strong>Cover Type:</strong> {{ boo.cover_type }}</li>
+                    <li class="list-group-item"><strong>Stock Status:</strong> {{ boo.stock_status }}</li>
+                    <li class="list-group-item"><strong>Dimensions:</strong> {{ boo.dimensions }}</li>
+                    <li class="list-group-item"><strong>Weight:</strong> {{ boo.weight }} g</li>
+                    <li class="list-group-item"><strong>Rating:</strong> <span class="badge bg-success fs-6">{{ boo.rating }} ⭐</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.book-image img {
+    max-height: 700px; /* Increase this value */
+    width: 90%; /* Ensures it scales proportionally */
+    object-fit: cover; /* Keeps image proportions */
+}
+
+/* Typography Styling */
+h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.book-details {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+}
+.btn-dark:hover {
+    background-color: #343a40;
+}
+.btn-danger:hover {
+    background-color: #dc3545;
+}
+@media (max-width: 768px) {
+    .card-footer .d-flex {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-cart, .btn-wishlist {
+        width: 100%;
+        text-align: center;
+    }
+}
+</style>
+
+{% endblock %}

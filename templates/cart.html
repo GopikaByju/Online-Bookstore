@@ -1,0 +1,278 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container cart-container">
+    <h2 class="text-center my-4">🛒 My Cart</h2>
+
+    {% if cart_items %}
+        <div class="cart-grid">
+            <!-- Cart Items Section -->
+            <div class="cart-items">
+                {% for item in cart_items %}
+                    <div class="cart-card">
+                        <!-- Image Section -->
+                        <div class="cart-image">
+                            <img src="{{ item.book.book_image.url }}" alt="Book Image">
+                        </div>
+
+                        <!-- Item Details -->
+                        <div class="cart-info">
+                            <h5 class="cart-title">
+                                <a href="{% url 'cartbookindividual' item.book.id %}">
+                                    {{ item.book.title }}
+                                </a>
+                            </h5>
+                            <p class="price">₹{{ item.book.price }}</p>
+
+                            <!-- Quantity Section -->
+                            <form method="post" action="{% url 'update_cart' item.id %}" class="quantity-form">
+                                {% csrf_token %}
+                                <label for="quantity-{{ item.id }}" class="qty-label">Qty:</label>
+                                <input type="number" id="quantity-{{ item.id }}" name="quantity"
+                                       min="1" max="{{ item.book.stock }}" value="{{ item.quantity }}" required>
+                                <button type="submit" class="update-btn">Update</button>
+                            </form>
+
+                            <!-- Stock Status -->
+                            <p class="stock-status {% if item.quantity >= 10 or item.book.stock <= 0 %}out-of-stock{% else %}in-stock{% endif %}">
+                                {% if item.quantity >= 10 or item.book.stock <= 0 %} Out of Stock {% else %} In Stock {% endif %}
+                            </p>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="cart-actions">
+                            <a href="{% url 'remove_from_cart' item.id %}" class="remove-btn">🗑️ REMOVE</a>
+                            <form action="{% url 'move_to_wishlist' item.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="wishlist-btn">❤️ Move to Wishlist</button>
+                            </form>
+
+                        </div>
+                    </div>
+                {% endfor %}
+                        <!-- Cart Summary -->
+            <div class="cart-summary">
+                <h4>Total Price: ₹{{ total_price }}</h4>
+                <a href="{% url 'checkout' %}" class="checkout-btn">Proceed to Checkout</a>
+            </div>
+            </div>
+
+        </div>
+
+
+    {% else %}
+        <p class="text-center empty-cart">Your cart is empty. 🛒</p>
+    {% endif %}
+</div>
+
+<!-- CSS Styling -->
+<style>
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Cart Container */
+.cart-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Cart Card */
+.cart-card {
+    display: flex;
+    background: #fdfdfd;
+    padding: 15px;
+    border-radius: 10px;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart-image img {
+    width: 90px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+/* Item Details */
+.cart-info {
+    flex: 1;
+    padding: 0 15px;
+}
+
+.cart-title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.cart-title a {
+    text-decoration: none;
+    color: #333;
+}
+
+.price {
+    font-size: 18px;
+    color: #d9534f;
+    font-weight: bold;
+}
+
+/* Quantity Form */
+.quantity-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.qty-label {
+    font-weight: bold;
+}
+
+.quantity-form input {
+    width: 50px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.update-btn {
+    padding: 6px 10px;
+    position: relative;
+    top: -11px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height:39px;
+    width:70px;
+    font-size: 12px;
+}
+
+.update-btn:hover {
+    background: #218838;
+}
+
+/* Stock Status */
+.stock-status {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.in-stock {
+    color: green;
+}
+
+.out-of-stock {
+    color: red;
+}
+
+/* Cart Actions */
+.cart-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.remove-btn,
+.wishlist-btn {
+    padding: 8px 10px;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+}
+
+.remove-btn {
+    background: #dc3545;
+    color: white;
+}
+
+.remove-btn:hover {
+    background: #c82333;
+}
+
+.wishlist-btn {
+    background: #ffc107;
+    color: white;
+}
+
+.wishlist-btn:hover {
+    background: #e0a800;
+}
+
+/* Cart Summary */
+.cart-summary {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+}
+
+.cart-summary h4 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.checkout-btn {
+    display: block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background: #007bff;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.checkout-btn:hover {
+    background: #0056b3;
+}
+
+/* Empty Cart */
+.empty-cart {
+    font-size: 18px;
+    color: #777;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .cart-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cart-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cart-summary {
+        position: relative;
+        margin-top: 20px;
+    }
+}
+</style>
+
+{% endblock %}

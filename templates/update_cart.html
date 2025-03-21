@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h2 class="text-center my-4">Update Cart</h2>
+
+{% if cart_items %}
+    <div class="cart-container">
+        {% for item in cart_items %}
+            <div class="cart-item">
+                <!-- Book Image -->
+                <div class="cart-item-image">
+                    <img src="{{ item.book.book_image.url }}" alt="Book Image">
+                </div>
+
+                <!-- Book Details -->
+                <div class="cart-item-details">
+                    <h4>
+                        <a href="{% url 'cartbookindividual' item.book.id %}">{{ item.book.title }}</a>
+                    </h4>
+                    <p class="price">₹{{ item.book.price }}</p>
+
+                    <!-- Update Quantity Form -->
+                    <form action="{% url 'update_cart' item.id %}" method="post">
+                        {% csrf_token %}
+                        <div class="quantity-container">
+                            <label for="quantity-{{ item.id }}">Qty: </label>
+                            <input type="number" id="quantity-{{ item.id }}" name="quantity"
+                                   min="1" max="{{ item.book.stock }}" value="{{ item.quantity }}" required>
+                            <button type="submit" class="update-btn">Update</button>
+                        </div>
+                    </form>
+
+                    <!-- Stock Status -->
+                    {% if item.book.stock <= 0 %}
+                        <p class="stock-status out-of-stock">Out of Stock</p>
+                    {% else %}
+                        <p class="stock-status in-stock">In Stock</p>
+                    {% endif %}
+                </div>
+
+                <!-- Remove from Cart -->
+                <div class="cart-actions">
+                    <a href="{% url 'remove_from_cart' item.id %}" class="remove-btn">Remove</a>
+                </div>
+            </div>
+        {% endfor %}
+
+        <!-- Cart Footer -->
+        <div class="cart-footer">
+            <h4>Total Price: ₹{{ total_price }}</h4>
+            <a href="{% url 'checkout' %}" class="btn btn-primary">Proceed to Checkout</a>
+        </div>
+    </div>
+{% else %}
+    <p class="text-center">Your cart is empty.</p>
+{% endif %}
+
+<style>
+/* Quantity Update Form */
+.quantity-container {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-container input {
+    width: 50px;
+    margin-left: 10px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.update-btn {
+    padding: 5px 10px;
+    margin-left: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.update-btn:hover {
+    background-color: #218838;
+}
+</style>
+
+{% endblock %}

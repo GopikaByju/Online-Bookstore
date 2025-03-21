@@ -1,0 +1,166 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<link href="{%static 'css/style.css'%}" rel="stylesheet">
+<link href="{%static 'css/vendor.css'%}" rel="stylesheet">
+<link href="{%static 'css/icomoon.css'%}" rel="stylesheet">
+<link href="{%static 'css/normalize.css'%}" rel="stylesheet">
+
+<div class="container py-5">
+<div class="container">
+    <h2>Search Results for "{{ query }}"</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% if books %}
+        <ul class="list-group">
+            {% for book in books %}
+                 <div class="col">
+            <div class="card h-100 shadow-lg border-0 rounded-4">
+                {% if book.book_image %}
+                <img src="{{ book.book_image.url }}" class="card-img-top rounded-top-4"
+                    alt="{{ book.title }}" style="height: 450px;">
+                {% endif %}
+                <div class="card-body text-center">
+                    <h5 class="card-title fw-bold"><a href="{% url 'bookindividual' book.id %}" >{{ book.title }}</a></h5>
+                    <p class="text-muted fs-6">by {{ book.author }}</p>
+                    <div class="d-flex justify-content-center align-items-center gap-2">
+                        <span class="fw-bold text-danger fs-5">₹{{ book.price }}</span>
+                        <span class="badge bg-success text-light fs-6">{{ book.rating }} ⭐</span>
+                    </div>
+                </div>
+
+<div class="card-footer bg-white text-center d-flex justify-content-between">
+    <div class="d-flex gap-3 justify-content-center w-100">
+        <!-- Add to Cart Button -->
+        <form action="{% url 'add_to_cart' book.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-cart d-flex align-items-center px-4 py-2">
+                <i class="bi bi-cart-plus"></i> <!-- Cart Icon -->
+                <span class="btn-text">Add to Cart</span>
+            </button>
+        </form>
+
+        <!-- Add to Wishlist Button -->
+        <form action="{% url 'add_to_wishlist' book.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-wishlist d-flex align-items-center justify-content-center">
+                <i class="bi bi-heart"></i> <!-- Heart Icon -->
+            </button>
+        </form>
+    </div>
+</div>
+            </div>
+        </div>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No books found matching your search.</p>
+    {% endif %}
+</div>
+</div>
+
+    <div class="text-center mt-5">
+        <a href="{% url 'category' %}" class="btn btn-outline-primary px-4 py-2 fw-bold">Back to Categories</a>
+    </div>
+</div>
+
+<style>
+    .wishlist-btn {
+    border: none;
+    background: yellow;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.wishlist-btn:hover {
+    transform: scale(1.2);
+    color: yellow;
+}
+    /* General Button Styling */
+.btn {
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Add to Cart Button */
+.btn-cart {
+    background-color: #333; /* Dark background */
+    color: white;
+    border: 2px solid transparent; /* Transparent border */
+    padding: 12px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 200px;
+    border-radius: 2px;
+}
+
+.btn-cart i {
+    font-size: 20px;
+}
+
+.btn-cart .btn-text {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.btn-cart:hover {
+    background-color: #555; /* Darker shade on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Slightly darker shadow */
+    transform: translateY(-2px); /* Slight upward movement */
+}
+
+.btn-cart:active {
+    transform: translateY(2px); /* Button presses down */
+}
+
+/* Add to Wishlist Button */
+.btn-wishlist {
+    background-color: yellow; /* Yellow background */
+    color: red; /* Red heart icon */
+    width: 60px; /* Fixed width for square button */
+    height: 64px; /* Fixed height for square button */
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0; /* No padding as it's a square */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-wishlist i {
+    font-size: 24px; /* Heart icon size */
+}
+
+.btn-wishlist:hover {
+    background-color: #d9534f; /* Red background on hover */
+    color: white; /* White heart on hover */
+    border-color: #d9534f; /* Red border on hover */
+    transform: scale(1.1); /* Slight scale up effect */
+}
+
+.btn-wishlist:active {
+    transform: scale(1); /* Button returns to normal size when clicked */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .section-description {
+        font-size: 1.1rem;
+    }
+}
+</style>
+
+{% endblock %}

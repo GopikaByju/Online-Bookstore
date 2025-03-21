@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+	<title>BOOKVISTA</title>
+    <meta name="csrf-token" content="{{ csrf_token }}">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="author" content="">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="static/css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="static/css/icomoon.css">
+	<link rel="stylesheet" type="text/css" href="static/css/vendor.css">
+	<link rel="stylesheet" type="text/css" href="static/css/style.css">
+
+
+
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#header" tabindex="0">
+    <div id="header-wrap">
+        <div class="top-content">
+            <div class="container-fluid">
+                <div class="row d-flex align-items-center">
+                    <!-- Social Links Column -->
+                    <div class="col-md-6">
+                        <div class="social-links">
+                            <ul class="social-icons d-flex list-unstyled m-0">
+                                <li class="me-3"><i class="fab fa-facebook"></i></li>
+                                <li class="me-3"><i class="fab fa-twitter"></i></li>
+                                <li class="me-3"><i class="fab fa-youtube"></i></li>
+                                <li class="me-3"><i class="fab fa-instagram"></i></li>
+                            </ul>
+                        </div><!-- social-links -->
+                    </div>
+
+
+
+                    <!-- User Info, Cart, Wishlist, Login, Signup Column -->
+                    <div class="col-md-6 d-flex justify-content-end align-items-center">
+                        <div class="right-element d-flex align-items-center">
+                            {% if user.is_authenticated %}
+                                <!-- User Info and Logout -->
+                                <i class="fas fa-user me-2"></i><span>{{ user.username }}</span>
+                                <a href="{% url 'logout' %}" class="ms-3">Logout</a>
+
+                                <!-- Cart and Wishlist -->
+                                <nav class="d-flex align-items-center ms-4">
+                                    <a href="{% url 'cart' %}" class="d-flex align-items-center me-4">
+                                        <i class="bi bi-cart-fill me-2"></i> Cart (<span id="cart-count">{{ cart_count }}</span>)
+                                    </a>
+                                    <a href="{% url 'wishlist' %}" class="d-flex align-items-center">
+                                        <i class="bi bi-heart-fill me-2"></i> Wishlist (<span id="wishlist-count">{{ wishlist_count }}</span>)
+                                    </a>
+                                </nav>
+                            {% else %}
+                                <!-- Account and Login/Signup Links -->
+                                <i class="fas fa-user me-2"></i><span> Account</span>
+                                <nav class="d-flex align-items-center ms-4">
+                                    <a href="{% url 'login' %}" class="me-3">Login</a>
+                                    <a href="{% url 'register' %}">Signup</a>
+                                </nav>
+                            {% endif %}
+                        </div><!-- right-element -->
+                    </div><!-- col-md-6 -->
+                </div><!-- row -->
+            </div><!-- container-fluid -->
+        </div><!-- top-content -->
+
+		<form method="GET" action="{% url 'search_books' %}">
+    <input class="search-field text search-input" placeholder="Search books..." type="search" name="q">
+    <button type="submit" class="search-button">
+        <i class="fas fa-search"></i> <!-- FontAwesome Search Icon -->
+    </button>
+</form>
+
+    </div><!-- header-wrap -->
+
+		<header id="header">
+			<div class="container-fluid">
+				<div class="row">
+
+					<div class="col-md-2">
+						<div class="main-logo">
+							<a href="index.html"><img src="{% static 'images/bookvistalogo2.png' %}" alt="logo"></a>
+						</div>
+					</div>
+
+					<div class="col-md-10">
+						<nav id="navbar">
+							<div class="main-menu stellarnav">
+								<ul class="menu-list">
+									<li class="menu-item active"><a href="{% url 'home'%}">Home</a></li>
+									<li class="menu-item has-sub">
+										<a href="#pages" class="nav-link">Pages</a>
+
+										<ul>
+											<li class="active"><a href="{% url 'home' %}">Home</a></li>
+											<li><a href="{% url 'about' %}">About</a></li>
+											<li><a href="{% url 'articles' %}">Article</a></li>
+											<li><a href="{% url 'category' %}">Our Store</a></li>
+											<li><a href="{% url 'contactus' %}">Contact</a></li>
+
+										</ul>
+
+									</li>
+									<li class="active"><a href="{% url 'bestsellers'%}">BestSellers</a></li>
+									<li class="active"><a href="{% url 'category'%}">Store</a></li>
+									<li class="active"><a href="{% url 'offers'%}">Offer</a></li>
+									<li class="active"><a href="{% url 'articles'%}">Articles</a></li>
+
+								</ul>
+
+
+								<div class="hamburger">
+									<span class="bar"></span>
+									<span class="bar"></span>
+									<span class="bar"></span>
+								</div>
+
+                                                   <div class="search-bar">
+                            <form role="search" method="get" class="search-box">
+                                <input class="search-field text search-input" placeholder="Search books..." type="search" name="q">
+                                <button type="submit" class="search-button">
+                                    <i class="fas fa-search"></i> <!-- FontAwesome Search Icon -->
+                                </button>
+                            </form>
+
+							</div>
+						</nav>
+
+					</div>
+
+				</div>
+			</div>
+		</header>
+
+	</div><!--header-wrap-->
+
+
+	<script src="static/js/jquery-1.11.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+		crossorigin="anonymous"></script>
+	<script src="static/js/plugins.js"></script>
+		<script src="static/js/script.js"></script>
+
+
+
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
+

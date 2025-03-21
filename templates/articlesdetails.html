@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link href="{%static 'css/style.css'%}" rel="stylesheet">
+<link href="{%static 'css/vendor.css'%}" rel="stylesheet">
+<link href="{%static 'css/icomoon.css'%}" rel="stylesheet">
+<link href="{%static 'css/normalize.css'%}" rel="stylesheet">
+
+
+
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+
+
+                <div class="card border-0 shadow-lg rounded-4 p-4">
+
+
+                    <div class="text-center mb-4">
+                        <img src="{{ art.article_image.url }}" class="img-fluid rounded-3 shadow-sm"
+                             alt="{{ art.article_title }}" style="max-height: 400px; object-fit: cover;">
+                    </div>
+
+               >
+                    <div class="post-item text-center">
+                        <h1 class="fw-bold">{{ art.article_title }}</h1>
+                        <h5 class="text-muted">
+                            <i class="bi bi-calendar-event"></i> {{ art.article_date }}
+                        </h5>
+                        <hr class="my-3">
+                        <p class="lead text-justify">{{ art.article_desc }}</p>
+                    </div>
+
+
+                    <div class="text-center mt-4">
+                        <a href="{% url 'articles' %}" class="btn btn-outline-primary btn-lg rounded-pill">
+                            <i class="bi bi-arrow-left"></i> Back to Articles
+                        </a>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

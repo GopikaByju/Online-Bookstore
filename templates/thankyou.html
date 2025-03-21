@@ -1,0 +1,126 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<section id="thankyou" class="thankyou-section">
+    <div class="container">
+        <div class="text-center">
+            <div class="icon-container">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2 class="section-title">Thank You!</h2>
+            <p class="section-description">Your order has been successfully placed. We appreciate your trust in us!</p>
+
+            <div class="thankyou-details">
+                <p><i class="fas fa-receipt"></i> Order Number: <strong>#123456</strong></p>
+                <p><i class="fas fa-truck"></i> Estimated Delivery: <strong>3-5 Business Days</strong></p>
+                <p><i class="fas fa-envelope"></i> A confirmation email has been sent to your registered email.</p>
+            </div>
+
+            <a href="/" class="btn btn-dark">Back to Home</a>
+            <a href="/orders" class="btn btn-orange">View My Orders</a>
+        </div>
+    </div>
+</section>
+
+ <style>
+/* Thank You Section */
+.thankyou-section {
+    background-color: #f9f9f9; /* Light Grey */
+    padding: 70px 0;
+    text-align: center;
+}
+
+/* Icon */
+.icon-container {
+    font-size: 5rem;
+    color: #ff7b00; /* Orange */
+    margin-bottom: 20px;
+}
+
+/* Title */
+.section-title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Description */
+.section-description {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Order Details */
+.thankyou-details {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.thankyou-details p {
+    font-size: 1.1rem;
+    color: #333;
+    margin: 10px 0;
+}
+
+.thankyou-details i {
+    color: #ff7b00;
+    margin-right: 10px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.5s ease;
+}
+
+.btn-dark {
+    background: #222;
+    color: #fff;
+}
+
+.btn-dark:hover {
+    background: #444;
+}
+
+.btn-orange {
+    background: #ff7b00;
+    color: #fff;
+}
+
+.btn-orange:hover {
+    background: #ff9900;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2.4rem;
+    }
+
+    .section-description {
+        font-size: 1.1rem;
+    }
+
+    .thankyou-details {
+        width: 90%;
+    }
+}
+
+ </style>
+
+{% endblock %}

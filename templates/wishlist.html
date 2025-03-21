@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h2 class="text-center my-4">🖤My Wishlist</h2>
+
+<div class="wishlist-container">
+    {% for item in wishlist_items %}
+        <div class="wishlist-item" id="wishlist-item-{{ item.id }}">
+            <div class="wishlist-item-image">
+                <img src="{{ item.book.book_image.url }}" alt="{{ item.book.title }}" class="book-image">
+            </div>
+
+            <div class="wishlist-item-details">
+                <h4 class="card-title fw-bold"><a href="{% url 'wishlistbookindividual' item.book.id %}">{{ item.book.title }}</a></h4>
+                <p class="book-author">Author: {{ item.book.author }}</p>
+                <p class="book-price">Price: ₹{{ item.book.price }}</p>
+
+                <div class="button-group">
+                    <!-- Move to Cart Form -->
+                    <form action="{% url 'move_to_cart' item.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="move-to-cart-btn">Move to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p class="empty-message">Your wishlist is empty.</p>
+    {% endfor %}
+</div>
+
+<style>
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Wishlist Container */
+.wishlist-container {
+    max-width: 900px;
+    background-color: #ffffff;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 30px auto;
+}
+
+/* Wishlist Item */
+.wishlist-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin: 15px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Image Styling */
+.book-image {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+/* Details Section */
+.wishlist-item-details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Author & Price Styling */
+.book-author, .book-price, .book-quantity {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+/* Button Group */
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
+/* Move to Cart Button */
+.move-to-cart-btn, .buy-now-btn {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+.move-to-cart-btn {
+    background-color: #C77D5D;
+}
+.move-to-cart-btn:hover {
+    background-color: #A55D40;
+}
+
+
+/* Empty Message Styling */
+.empty-message {
+    font-size: 16px;
+    color: #777;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .wishlist-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .wishlist-item-image img {
+        width: 80px;
+        height: 120px;
+    }
+
+    .wishlist-container {
+        width: 90%;
+    }
+
+    .wishlist-item-details {
+        margin-top: 10px;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+}
+
+</style>
+
+{% endblock %}

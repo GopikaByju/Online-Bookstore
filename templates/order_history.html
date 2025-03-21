@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+<link href="{% static 'css/vendor.css' %}" rel="stylesheet">
+<link href="{% static 'css/icomoon.css' %}" rel="stylesheet">
+<link href="{% static 'css/normalize.css' %}" rel="stylesheet">
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Your Order History</h2>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="table-dark text-center">
+                <tr>
+                    <th>Order ID</th>
+                    <th>Items</th>
+                    <th>Order Date</th>
+                    <th>Total Items</th>
+                    <th>Total Price</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                <tr>
+                    <td class="text-center">#{{ order.id }}</td>
+                    <td>
+                        <ul class="list-unstyled">
+                            {% for item in order.items.all %}
+                            <li class="d-flex flex-column flex-sm-row align-items-center mb-2">
+                                <img src="{{ item.book.book_image.url }}" alt="{{ item.book.title }}" class="img-fluid rounded me-2" style="max-width: 80px; height: auto;">
+                                <span class="text-center text-sm-start">{{ item.book.title }} (x{{ item.quantity }})</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td class="text-center">{{ order.created_at|date:"M d, Y" }}</td>
+                    <td class="text-center">{{ order.items.count }}</td>
+                    <td class="text-center">₹{{ order.total_price }}</td>
+                    <td class="text-center">
+                        {% if order.status == "Delivered" %}
+                            <span class="badge bg-success">Delivered</span>
+                        {% elif order.status == "Processing" %}
+                            <span class="badge bg-warning text-dark">Processing</span>
+                        {% else %}
+                            <span class="badge bg-danger">Cancelled</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

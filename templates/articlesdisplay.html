@@ -1,0 +1,48 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<link href="{%static 'css/style.css'%}" rel="stylesheet">
+
+  <div class="p2">
+        <center><h1>Display Articles</h1></center>
+      </div>
+
+<table class="table table-table table-hover">
+
+  <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>View</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+    {% for item in art %}
+   <tbody>
+
+            <tr>
+
+                <td>{{item.article_title}}</td>
+                <td>{{item.article_date}}</td>
+                <td>{{item.article_desc}}</td>
+                <td>{% if item.article_image %}
+     <div class="card" style="width: 8rem;">
+  <img src="{{item.article_image.url}}" class="card-img-top" alt="...">
+
+</div>
+                {% endif %}</td>
+
+                <td><a href="{% url 'articlesingle' item.id %}">view</a>
+                <td><a href="{% url 'articlesedit' item.id %}">edit</a></td>
+                <td><a href="{% url 'articlesdelete' item.id %}">delete</a></td>
+            </tr>
+
+        </tbody>
+    {% endfor %}
+
+
+{% endblock %}
+

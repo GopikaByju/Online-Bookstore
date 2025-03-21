@@ -1,0 +1,321 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+
+<section id="terms-conditions" class="terms-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">Terms & Conditions</h2>
+            <p class="section-description">Please read these Terms and Conditions carefully before using our website and services. By accessing or using our website, you agree to be bound by these terms.</p>
+        </div>
+
+        <div class="terms-content">
+            <div class="accordion" id="termsAccordion">
+
+                <!-- Section 1: General Terms -->
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                            General Terms
+                        </button>
+                    </h3>
+                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#termsAccordion">
+                        <div class="accordion-body">
+                            <p>By accessing or using this website, you agree to comply with the terms outlined in this agreement. We reserve the right to change or modify these terms at any time.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: User Responsibilities -->
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                            User Responsibilities
+                        </button>
+                    </h3>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#termsAccordion">
+                        <div class="accordion-body">
+                            <p>Users are responsible for maintaining the confidentiality of their account and password. You agree to notify us immediately of any unauthorized access or use of your account.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Intellectual Property -->
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                            Intellectual Property
+                        </button>
+                    </h3>
+                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#termsAccordion">
+                        <div class="accordion-body">
+                            <p>The content on our website, including text, graphics, logos, images, and software, is owned by us and protected by intellectual property laws. You are not permitted to use any of our content without permission.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4: Payment Terms -->
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                            Payment Terms
+                        </button>
+                    </h3>
+                    <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#termsAccordion">
+                        <div class="accordion-body">
+                            <p>All payments for our services or products are due upon purchase. We accept various payment methods, including credit cards and online payment systems.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 5: Limitation of Liability -->
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive">
+                            Limitation of Liability
+                        </button>
+                    </h3>
+                    <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#termsAccordion">
+                        <div class="accordion-body">
+                            <p>We are not liable for any indirect, incidental, or consequential damages arising from the use of our website. Our liability is limited to the maximum extent permitted by law.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 6: Governing Law -->
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix">
+                            Governing Law
+                        </button>
+                    </h3>
+                    <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#termsAccordion">
+                        <div class="accordion-body">
+                            <p>This agreement shall be governed by and construed in accordance with the laws of our Country. Any disputes will be resolved in the courts of your city.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer id="footer">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-md-4">
+
+					<div class="footer-item">
+						<div class="company-brand">
+							<img src="static/images/bookvistalogo2.png" alt="logo" class="footer-logo">
+							<p>BookVista is your go-to online bookstore, offering a vast collection of books across various genres.
+								Whether you're a fiction lover, a knowledge seeker, or looking for the latest bestsellers, we have something for every reader. Explore, discover, and enjoy seamless book shopping with BookVista!
+							</p>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col-md-2">
+
+					<div class="footer-menu">
+						<h5>Company</h5>
+						<ul class="menu-list">
+							<li class="menu-item">
+								<a href="{% url 'about' %}">About Us</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'articles' %}">Articles </a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'careers' %}">Careers</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'contactus' %}">Contact Us</a>
+							</li>
+
+						</ul>
+					</div>
+
+				</div>
+				<div class="col-md-2">
+
+					<div class="footer-menu">
+						<h5>Discover</h5>
+						<ul class="menu-list">
+							<li class="menu-item">
+								<a href="{% url 'home' %}">Home</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'category' %}">Books</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'category' %}">Categories</a>
+							</li>
+
+						</ul>
+					</div>
+
+				</div>
+				<div class="col-md-2">
+
+					<div class="footer-menu">
+						<h5>My account</h5>
+						<ul class="menu-list">
+							<li class="menu-item">
+								<a href="{% url 'login' %}">Sign In</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'cart' %}">View Cart</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'wishlist' %}">View Wishlist</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'order_history' %}">Order History</a>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+				<div class="col-md-2">
+
+					<div class="footer-menu">
+						<h5>Policies</h5>
+						<ul class="menu-list">
+							<li class="menu-item">
+								<a href="{% url 'privacypolicy' %}">Privacy Policy</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'shipping&returns' %}">Shipping and Returns</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 'payments&refund' %}">Payments and Refunds</a>
+							</li>
+							<li class="menu-item">
+								<a href="{% url 't&c' %}">T&C</a>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+
+			</div>
+			<!-- / row -->
+
+		</div>
+	</footer>
+
+	<div id="footer-bottom">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+
+
+
+							<div class="col-md-6">
+								<div class="social-links align-right">
+									<ul>
+										<li>
+											<a href="#"><i class="fab fa-facebook"></i></a>
+										</li>
+										<li>
+											<a href="#"><i class="fab fa-twitter"></i></a>
+										</li>
+										<li>
+											<a href="#"><i class="fab fa-youtube"></i></a>
+										</li>
+										<li>
+											<a href="#"><i class="fab fa-instagram"></i></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+						</div>
+					</div><!--grid-->
+
+				</div><!--footer-bottom-content-->
+			</div>
+		</div>
+	</div>
+<style>
+/* Terms & Conditions Section */
+.terms-section {
+    background-color: #f9f9f9; /* Light Grey */
+    color: #333;
+    padding: 70px 0;
+}
+
+/* Section Title */
+.section-title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.section-description {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+}
+
+/* Accordion Styling */
+.accordion-item {
+    border: none;
+    margin-bottom: 10px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-button {
+    background-color: #222; /* Dark Grey */
+    color: #fff;
+    font-weight: bold;
+    padding: 15px;
+    font-size: 1.2rem;
+}
+
+.accordion-button:hover {
+    background-color: #444;
+}
+
+.accordion-body {
+    background: #fff;
+    padding: 20px;
+    color: #555;
+}
+
+/* Contact Info */
+a {
+    color: #ff7b00; /* Orange */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #ff9900;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2.4rem;
+    }
+
+    .section-description {
+        font-size: 1.1rem;
+    }
+}
+
+</style>
+
+{% endblock %}

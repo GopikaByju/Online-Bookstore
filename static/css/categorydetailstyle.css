@@ -1,0 +1,38 @@
+
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+         max-width: 300px; /* Reduce card width */
+         margin: auto; /* Center the card */
+         transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-dark:hover {
+        background-color: #ff6600;
+        border-color: #ff6600;
+    }
+    .card {
+   
+}
+
+.card-img-top {
+    height: 500px; /* Reduce image height */
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 10px; /* Reduce space inside the card */
+}
+
+.card-title {
+    font-size: 1.3rem; /* Reduce title size */
+}
+
+.card-footer {
+    padding: 5px; /* Reduce footer padding */
+}
+

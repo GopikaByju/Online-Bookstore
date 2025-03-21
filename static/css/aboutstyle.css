@@ -1,0 +1,130 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f4f1ea;
+    color: #333;
+}
+
+/* About Section */
+.about-section {
+    background: #ddd;
+    padding: 80px 20px;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.about-text {
+    width: 50%;
+}
+
+.about-image img {
+    width: 500px;
+    border-radius: 10px;
+}
+
+/* Vision Section */
+.vision-section {
+    background: #fdf8f3;
+    color:white;
+    padding: 100px 20px;
+    padding-left:15%;
+
+}
+
+
+.overlay {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 85%;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Why Choose Us */
+.why-choose-section {
+    background: white;
+    padding: 60px 20px;
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.feature {
+    width: 30%;
+    text-align: center;
+}
+
+.feature img {
+    width: 100px;
+    height:100px
+}
+
+
+
+/* Reviews */
+.reviews {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.review {
+    background: #8B4513;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 40%;
+}
+
+/* Button */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white; /* White text */
+    background: black;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.5s ease;
+
+}
+
+.btn:hover {
+    background: orange;
+    transform: scale(1.1);
+}
+
+
+/* Animations */
+.fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-text { width: 100%; }
+    .feature { width: 100%; }
+}

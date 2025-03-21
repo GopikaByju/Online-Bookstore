@@ -1,0 +1,103 @@
+/* Career Section */
+.career-section {
+    background-color: 	#484848;  /* Dark grey background */
+    color: #fff;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-image: url('https://www.example.com/your-image.jpg');  /* Add a stylish background image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    border-top: 5px solid #fff;  /* White border at the top */
+}
+
+/* Section Title */
+.section-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    animation: fadeInUp 1s ease-out;
+}
+
+/* Section Description */
+.section-description {
+    font-size: 1.2rem;
+    color: #ddd;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+    max-width: 800px;
+    animation: fadeInUp 1.5s ease-out;
+}
+
+/* Subtitle */
+.section-subtitle {
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: #fff;
+    margin-top: 25px;
+    animation: fadeInUp 2s ease-out;
+}
+
+/* Content */
+.section-content {
+    font-size: 1.3rem;
+    color: #ddd;
+    margin-top: 10px;
+    line-height: 1.6;
+    animation: fadeInUp 2.5s ease-out;
+}
+
+/* Call to Action */
+.call-to-action {
+    font-size: 1.8rem;
+    color: #ff9900;  /* Golden yellow color */
+    margin-top: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    animation: fadeInUp 3s ease-out;
+}
+
+.email-link {
+    color: #ff9900;  /* Golden yellow color */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.email-link:hover {
+    color: #ffcc00;
+    text-decoration: underline;
+}
+
+/* Keyframe Animations */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .career-section {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .section-subtitle {
+        font-size: 1.5rem;
+    }
+
+    .section-content {
+        font-size: 1.2rem;
+    }
+}
